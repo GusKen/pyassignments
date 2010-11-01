@@ -1,0 +1,29 @@
+Ken Gustafson - Contributions to Problem Set 8
+Learned various aspects of git version control with this assignment.
+
+1) Used fedora 10. Setup a repository at GitHub and at codaset. 
+In the end used GitHub. Got nowhere with fedora. Could not communicate 
+with GitHub. 
+2) Got sidetracked with svn. Made sure that I could communicate 
+with the repositories that I had from previous work. Fine!
+3) Looked at GUIs for svn namely rabbitvcs. Got partway there. Have to upgrade
+the Fedora 10 python (which is 2.5) for pygobject, a required package. 
+So leave that for another day!
+4) Located a website for fedora 10 git repositories and gitosis,
+http://www.webtop.com.au/blog/installing-git..., which discussed
+the configuration issues in detail. This site clarified setting up 
+repositories on the local machine but did not go into git websites.
+5) Went to my winxp laptop. Set up the empty repository at GitHub.
+Followed through with their proceedure with a local directory pyassignments
+Everything worked except for commit -m 'first commit'. So just did commit.
+It asked for a message in a word processor. Put one in and everything worked
+just fine. However I noticed messages did not show up. 
+
+6) To clone the site:
+
+a) Create a directory for cloning ( I used Assignments)
+b) do
+git clone git@github.com:GusKen/pyassignments.git
+
+c) It will ask for your rsa.pub paraphase ( I believe only yours since this 
+is a public site) 
