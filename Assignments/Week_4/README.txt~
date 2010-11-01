@@ -1,0 +1,78 @@
+Week_3 HOMEWORK NOTES
+
+1) The directory Breakout_Problem is a pantamime of the breakout problem
+in class for my own edification
+
+2) For Problem 2 I picked 1.aif and 5.aif to identify (time constraint)
+The answers for these are in the text files Solutions\Problem2\Printout_1.txt
+and Solutions\Problem2\Printout_5.txt. Have left the debugging statements 
+at the top of these files for my own future reference. The figures are
+explanatory 
+
+3) The python program used is  Solutions\Audio_Week_3.py
+
+4) While problem three took quite a while, I spent much more time on problem 2.
+The plan was to work with my son (site 2) in Albuquerque 
+with him as the server and
+me (site 1) as the client. 
+I was to guarantee that the server and client software
+was debugged before we did this. This has evolved into a more interesting 
+application for which each site has both server and client tasks. The tasks
+are working properly but they need cleaning up and more detail. The work
+flow is:
+
+site 1 - start server in which function Hallway() is defined 
+handle= open("Hallway.jpg", "rb")
+return xmlrpclib.Binary(handle.read())
+server is on (host,port) = ("localhost", 5020)
+
+site 2 - client 
+use proxy=xmlrpclib.ServerProxy("http:/localhost:5020/")
+handle = open("fetched_Hallway.jpg","wb")
+handle.write(proxy.Hallway().data)
+handle.close()
+to access the image on the server
+
+site 2 - client
+carries out transformations on the accessed image. (This still
+has to be done. In the client software I have simply used the
+ image already on the local host (site 2) - subplot 221 :
+ Fourier transformed it - subplot 222 and:
+ inverse transformed it to be sure the 
+image is obtained- subplot 223 ). 
+Thus I know I can do the 
+same thing with the image accessed from the server.
+
+site 2 - server portion of the software at site 2.
+Define a function def Hall_transmit():
+ handle=open("Hall_transmit.jpg", "rb")
+ return xmlrpclib.Binary(handle.read))
+ handle.close()
+
+Run the server on host1, port1 = "localhost",502
+
+site 1 (back to it) - client portion of site 1
+restart the server after site 2 has received 
+fetched_Hallway.jpg - with
+three lines added:
+
+handle = open("fetched_Hall_transmit.jpg", "wb")
+# (would not open if wb was w )
+handle.write(proxy.Hall_transmit().data)
+handle.close
+
+The server on port 5021 was active initially
+and the proxy was set-up
+
+The handle commands cannot initially be active because
+the site 2 server portion is not active. Thus site 1 must
+only act as a client to start.
+
+Finally - subplot 222 is the image transmitted from site2
+to site 2
+
+The two programs are
+site 1 - xmlrpcserv.py
+site 2 - xmlpclient.py
+
+The images discusses above are Solutions\Problem1\images\Prob_1Solns.png
